@@ -1,0 +1,23 @@
+# Kick messages
+kick-message: "&cAccess denied! Please use our official domain."
+kick-reserved-uuid: "&cAccess denied! Your UUID does not match the reserved UUID for this username."
+
+# Alert messages
+alert-message: "&ePlayer {username} tried to connect using {domain} but was blocked."
+alert-reserved-uuid: "&ePlayer {username} was blocked due to a mismatched UUID."
+
+# Debug messages
+debug-message: "&7[DEBUG] Player {username} is connecting using domain: {domain}."
+
+# Reasons for blocking
+reason-invalid-domain: "Invalid domain. Please connect using an authorized domain."
+reason-uuid-mismatch: "Reserved UUID."
+
+# Command messages
+invalid-command: "&cInvalid command. Use /nobypass reload to reload the configuration."
+reload-success: "&aConfiguration reloaded successfully!"
+no-permission: "&cYou don't have permission to execute this command!"
+
+# Webhook messages
+webhook-title: "Blocked Connection"
+webhook-description: "**Player:** {username}\n**Domain:** {domain}\n**IP:** {ip}\n**Reason:** {reason}"

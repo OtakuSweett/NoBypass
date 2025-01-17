@@ -1,0 +1,23 @@
+# Mensajes de expulsión
+kick-message: "&c¡Acceso denegado! Por favor, utiliza nuestro dominio oficial."
+kick-reserved-uuid: "&c¡Acceso denegado! Tu UUID no coincide con el UUID reservado para este nombre de usuario."
+
+# Mensajes de alerta
+alert-message: "&eEl jugador {username} intentó conectarse usando {domain} pero fue bloqueado."
+alert-reserved-uuid: "&eEl jugador {username} fue bloqueado debido a una discrepancia en el UUID."
+
+# Mensajes de depuración
+debug-message: "&7[DEBUG] El jugador {username} se está conectando usando el dominio: {domain}."
+
+# Razones de bloqueo
+reason-invalid-domain: "Dominio inválido."
+reason-uuid-mismatch: "UUID reservada."
+
+# Mensajes de comando
+invalid-command: "&cComando inválido. Usa /nobypass reload para recargar la configuración."
+reload-success: "&a¡Configuración recargada con éxito!"
+no-permission: "&c¡No tienes permiso para ejecutar este comando!"
+
+# Mensajes del webhook
+webhook-title: "Conexión Bloqueada"
+webhook-description: "**Jugador:** {username}\n**Dominio:** {domain}\n**IP:** {ip}\n**Razón:** {reason}"

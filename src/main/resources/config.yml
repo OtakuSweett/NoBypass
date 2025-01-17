@@ -1,0 +1,43 @@
+# ┏━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┓
+# ┃             NoBypass Plugin Configuration           ┃
+# ┗━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┛
+
+# Enable or disable the plugin.
+enabled: true
+
+# List of allowed domains for player connections.
+# Players must connect using one of these domains.
+allowed-domains:
+  - "example.net"
+
+# Debug mode for the plugin. If enabled, logs additional information for troubleshooting.
+debug: false
+
+# Language for plugin messages. Supported: en, es, fr
+# The plugin will use this language for system messages.
+lang: en
+
+# ┏━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┓
+# ┃                 Discord Webhook Settings            ┃
+# ┗━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┛
+
+# Discord Webhook configuration.
+webhook:
+  # Enable or disable the webhook.
+  enabled: false
+  # The URL for the Discord webhook.
+  url: "https://your-discord-webhook-url-here"
+  # The color of the embed message in Discord (use decimal RGB value).
+  color: 16711680
+
+# ┏━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┓
+# ┃              Reserved UUID Configuration            ┃
+# ┗━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┛
+
+# Reserved UUIDs for specific usernames.
+# Players listed here will always match the specified UUID for their username.
+reserved-uuid:
+  ExamplePlayer1:
+    uuid: "123e4567-e89b-12d3-a456-426614174000"
+  ExamplePlayer2:
+    uuid: "223e4567-e89b-12d3-a456-426614174001"
