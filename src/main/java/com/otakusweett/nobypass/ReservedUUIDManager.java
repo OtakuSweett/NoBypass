@@ -3,8 +3,12 @@ package com.otakusweeett.nobypass;
 import java.util.Collections;
 import java.util.HashMap;
 import java.util.Map;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 public class ReservedUUIDManager {
+
+    private static final Logger LOGGER = Logger.getLogger(ReservedUUIDManager.class.getName());
 
     private final MessageManager messageManager;
     private final Map<String, String> reservedUUIDs = new HashMap<>();
@@ -20,14 +24,39 @@ public class ReservedUUIDManager {
      */
     public void loadReservedUUIDs(Map<String, Map<String, String>> reservedUUIDsFromConfig) {
         reservedUUIDs.clear();
-        if (reservedUUIDsFromConfig != null) {
-            reservedUUIDsFromConfig.forEach((username, details) -> {
-                String uuid = details.get("uuid");
-                if (uuid != null && !uuid.isEmpty()) {
-                    reservedUUIDs.put(username.toLowerCase(), uuid);
-                }
-            });
+        if (reservedUUIDsFromConfig == null || reservedUUIDsFromConfig.isEmpty()) {
+            LOGGER.warning("No reserved UUIDs found in configuration.");
+            return;
         }
+
+        Map<String, String> seenUUIDs = new HashMap<>();
+        reservedUUIDsFromConfig.forEach((username, details) -> {
+            if (username == null || username.isEmpty()) {
+                LOGGER.warning("Encountered an entry with an empty or null username. Skipping.");
+                return;
+            }
+
+            if (details == null) {
+                LOGGER.warning("No details provided for username: " + username + ". Skipping.");
+                return;
+            }
+
+            String uuid = details.get("uuid");
+            if (uuid == null || uuid.isEmpty()) {
+                LOGGER.warning("No UUID found for username: " + username + ". Skipping.");
+                return;
+            }
+
+            if (seenUUIDs.containsKey(uuid.toLowerCase())) {
+                LOGGER.warning("Duplicate UUID detected for username: " + username + ". Ignoring duplicate entry.");
+                return;
+            }
+
+            reservedUUIDs.put(username.toLowerCase(), uuid);
+            seenUUIDs.put(uuid.toLowerCase(), username);
+        });
+
+        LOGGER.info("Successfully loaded " + reservedUUIDs.size() + " reserved UUIDs.");
     }
 
     /**
@@ -39,10 +68,15 @@ public class ReservedUUIDManager {
      */
     public boolean isUUIDReserved(String username, String uuid) {
         if (username == null || uuid == null) {
+            LOGGER.warning("Attempted to check a null username or UUID.");
             return false;
         }
         String reservedUUID = reservedUUIDs.get(username.toLowerCase());
-        return uuid.equalsIgnoreCase(reservedUUID);
+        boolean result = uuid.equalsIgnoreCase(reservedUUID);
+        if (!result) {
+            LOGGER.fine("UUID mismatch for username: " + username + ". Expected: " + reservedUUID + ", Got: " + uuid);
+        }
+        return result;
     }
 
     /**
