@@ -29,21 +29,20 @@ public class ReloadCommand implements SimpleCommand {
             return;
         }
 
-        // Recargar configuración principal
         configManager.loadConfig();
 
-        // Recargar mensajes con el idioma configurado
+
         String lang = configManager.getLanguage();
         messageManager.loadMessages(lang, configManager.getConfigFile().getParent());
 
-        // Actualizar configuración del webhook
+
         Map<String, Object> webhookSettings = configManager.getWebhookConfig();
         webhookManager.updateConfig(webhookSettings);
 
-        // Recargar UUIDs reservados
+
         reservedUUIDManager.loadReservedUUIDs(configManager.getReservedUUIDs());
 
-        // Notificar al administrador que la configuración se recargó
+
         invocation.source().sendMessage(Component.text(messageManager.getMessage("reload-success")));
         logger.info("Configuration, messages, webhook settings, and reserved UUIDs reloaded successfully.");
     }
