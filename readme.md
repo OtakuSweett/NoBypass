@@ -68,7 +68,7 @@ The plugin supports Discord webhooks to notify administrators of blocked connect
 
 
 ## 🖥️ Compatibility
-- **Minecraft Versions**: Fully compatible with Velocity-based servers running versions **1.8** to **1.21.4**.
+- **Minecraft Versions**: Fully compatible with Velocity-based servers.
 
 
 
