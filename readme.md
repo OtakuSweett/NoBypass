@@ -98,6 +98,8 @@ The plugin supports Discord webhooks to notify administrators of blocked connect
 ## 📝 License
 This plugin is licensed under the MIT License.
 
+<img width="96" height="96" alt="image" src="https://github.com/user-attachments/assets/b2c9ec9d-b1bb-4a2e-9f55-79e3fd8ecb85" />
+
 
 
 ## 🤝 Contributing
